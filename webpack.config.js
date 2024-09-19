@@ -1,4 +1,5 @@
 const path = require("path");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     watch: true,
@@ -14,7 +15,7 @@ module.exports = {
             {
                 test: require.resolve("pressure"),
                 use: "exports-loader?type=commonjs&exports=Pressure",
-            }
+            },
         ],
     },
     resolve: {
@@ -28,4 +29,9 @@ module.exports = {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'),
     },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: 'src/index.html'
+        })
+    ],
 };
